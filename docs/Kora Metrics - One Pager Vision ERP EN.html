@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kora Metrics — Integrated ERP Vision</title>
+<style>
+  :root {
+    --bg: #0F172A;
+    --bg-card: #1E293B;
+    --primary: #e78a53;
+    --primary-dark: #e07840;
+    --secondary: #3B82F6;
+    --text: #F1F5F9;
+    --text-muted: #94A3B8;
+    --border: #334155;
+    --green: #10B981;
+    --purple: #8B5CF6;
+    --yellow: #F59E0B;
+    --red: #EF4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    width: 210mm;
+    min-height: 297mm;
+    max-height: 297mm;
+    overflow: hidden;
+    padding: 18mm 14mm 14mm 14mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page { size: A4; margin: 0; }
+  .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--primary); }
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .logo-area { display: flex; align-items: center; gap: 10px; }
+  .logo-text { font-size: 20px; font-weight: 700; color: var(--text); letter-spacing: -0.5px; }
+  .logo-accent { color: var(--primary); }
+  .badge { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; font-size: 9px; color: var(--text-muted); letter-spacing: 0.5px; }
+  .tagline { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.2; margin-bottom: 4px; }
+  .subtitle { font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; }
+  .section-title { font-size: 11px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .card { background: var(--bg-card); border-radius: 8px; padding: 10px 12px; border-left: 3px solid var(--primary); }
+  .card-blue { border-left-color: var(--secondary); }
+  .card-green { border-left-color: var(--green); }
+  .card-purple { border-left-color: var(--purple); }
+  .card-yellow { border-left-color: var(--yellow); }
+  .card-title { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .card-desc { font-size: 9px; color: var(--text-muted); line-height: 1.4; }
+  .stat-card { background: var(--bg-card); border-radius: 8px; padding: 8px 12px; text-align: center; border-top: 3px solid var(--primary); }
+  .stat-card.blue { border-top-color: var(--secondary); }
+  .stat-card.green { border-top-color: var(--green); }
+  .stat-card.purple { border-top-color: var(--purple); }
+  .stat-num { font-size: 22px; font-weight: 700; color: var(--primary); }
+  .stat-card.blue .stat-num { color: var(--secondary); }
+  .stat-card.green .stat-num { color: var(--green); }
+  .stat-card.purple .stat-num { color: var(--purple); }
+  .stat-label { font-size: 8px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .module-card { background: var(--bg-card); border-radius: 8px; padding: 9px 11px; display: flex; gap: 8px; align-items: flex-start; }
+  .module-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .module-content { flex: 1; }
+  .module-title { font-size: 10px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .module-desc { font-size: 8.5px; color: var(--text-muted); line-height: 1.3; }
+  .pricing-row { display: flex; gap: 8px; margin-bottom: 12px; }
+  .pricing-card { flex: 1; background: var(--bg-card); border-radius: 8px; padding: 8px; text-align: center; border-top: 3px solid var(--border); }
+  .pricing-card.featured { border-top-color: var(--primary); }
+  .pricing-name { font-size: 10px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .pricing-price { font-size: 14px; font-weight: 700; color: var(--primary); }
+  .pricing-detail { font-size: 8px; color: var(--text-muted); }
+  .team-row { display: flex; gap: 6px; margin-bottom: 12px; }
+  .team-member { flex: 1; text-align: center; }
+  .team-name { font-size: 9px; font-weight: 600; color: var(--text); }
+  .team-role { font-size: 8px; color: var(--primary); }
+  .team-exp { font-size: 7.5px; color: var(--text-muted); }
+  .cta-bar { background: var(--bg-card); border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); }
+  .cta-text { font-size: 9px; color: var(--text-muted); }
+  .cta-contact { font-size: 9px; color: var(--text); }
+  .cta-highlight { color: var(--primary); font-weight: 600; }
+  .divider { height: 1px; background: var(--border); margin: 12px 0; }
+  .flex-row { display: flex; gap: 8px; }
+  .flex-col { flex: 1; }
+  .small-text { font-size: 8px; color: var(--text-muted); line-height: 1.4; }
+  .highlight { color: var(--primary); font-weight: 600; }
+  .market-row { display: flex; gap: 8px; margin-bottom: 10px; }
+  .market-card { flex: 1; background: var(--bg-card); border-radius: 8px; padding: 8px 10px; }
+  .market-label { font-size: 9px; font-weight: 700; }
+  .market-val { font-size: 8.5px; color: var(--text-muted); line-height: 1.3; }
+  .tam { color: var(--secondary); }
+  .sam { color: var(--primary); }
+  .som { color: var(--green); }
+  .roadmap-steps { display: flex; gap: 6px; margin-bottom: 10px; }
+  .step { flex: 1; background: var(--bg-card); border-radius: 8px; padding: 7px 9px; text-align: center; border-top: 3px solid var(--border); }
+  .step-label { font-size: 8px; font-weight: 700; color: var(--primary); margin-bottom: 2px; }
+  .step-text { font-size: 8px; color: var(--text-muted); line-height: 1.3; }
+
+  .vision-badge { display: inline-block; background: linear-gradient(135deg, #E78A5340, #3B82F620); border: 1px solid var(--primary); border-radius: 20px; padding: 3px 14px; font-size: 9px; color: var(--primary); font-weight: 600; letter-spacing: 0.5px; }
+  .phase-arrow { display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 16px; padding: 0 4px; }
+  .integration-flow { display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+  .flow-item { flex: 1; background: var(--bg-card); border-radius: 8px; padding: 6px 8px; text-align: center; }
+  .flow-item-title { font-size: 8px; font-weight: 600; color: var(--text); }
+  .flow-item-desc { font-size: 7px; color: var(--text-muted); }
+  .benefit-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+  .benefit { background: var(--bg-card); border-radius: 8px; padding: 8px 10px; text-align: center; }
+  .benefit-icon { font-size: 18px; margin-bottom: 3px; }
+  .benefit-title { font-size: 9px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .benefit-desc { font-size: 7.5px; color: var(--text-muted); line-height: 1.3; }
+</style>
+</head>
+<body>
+<div class="top-bar"></div>
+
+<div class="header">
+  <div class="logo-area">
+    <div class="logo-text">Kora<span class="logo-accent">Metrics</span></div>
+  </div>
+  <div style="display:flex; gap:8px; align-items:center;">
+    <span class="vision-badge">PRODUCT VISION</span>
+    <span class="badge">GITEX AFRICA 2026</span>
+  </div>
+</div>
+
+<div class="tagline">The Integrated Finance &
+Tax Management System for Africa</div>
+<div class="subtitle">A fully AI-driven ERP, natively built for the SYSCOHADA framework and tax regulations across 17 OHADA countries. From supplier invoices to tax declarations, automatically.</div>
+
+<div class="section-title">The Vision: A Fully Automated Flow</div>
+<div class="integration-flow">
+  <div class="flow-item" style="border-top:3px solid var(--primary);"><div class="flow-item-title"><span style="color:var(--primary);font-weight:700;">&#9654;</span> Invoices</div><div class="flow-item-desc">OCR + Extraction</div></div>
+  <div class="phase-arrow">→</div>
+  <div class="flow-item" style="border-top:3px solid var(--secondary);"><div class="flow-item-title"><span style="color:var(--secondary);font-weight:700;">&#9679;</span> AI Analysis</div><div class="flow-item-desc">SYSCOHADA + Tax</div></div>
+  <div class="phase-arrow">→</div>
+  <div class="flow-item" style="border-top:3px solid var(--green);"><div class="flow-item-title"><span style="color:var(--green);font-weight:700;">&#9650;</span> Accounting</div><div class="flow-item-desc">Auto entries</div></div>
+  <div class="phase-arrow">→</div>
+  <div class="flow-item" style="border-top:3px solid var(--purple);"><div class="flow-item-title"><span style="color:var(--secondary);font-weight:700;">&#9679;</span> Banking</div><div class="flow-item-desc">Reconciliation</div></div>
+  <div class="phase-arrow">→</div>
+  <div class="flow-item" style="border-top:3px solid var(--yellow);"><div class="flow-item-title"><span style="color:var(--purple);font-weight:700;">&#9830;</span> Payroll</div><div class="flow-item-desc">Auto salaries</div></div>
+  <div class="phase-arrow">→</div>
+  <div class="flow-item" style="border-top:3px solid var(--red);"><div class="flow-item-title"><span style="color:var(--red);font-weight:700;">&#9733;</span> Declarations</div><div class="flow-item-desc">TVA, IS, Withh.</div></div>
+  <div class="phase-arrow">→</div>
+  <div class="flow-item" style="border-top:3px solid var(--primary);"><div class="flow-item-title"><span style="color:var(--primary);font-weight:700;">&#9650;</span> Fin. Statements</div><div class="flow-item-desc">SYSCOHADA</div></div>
+</div>
+
+<div class="section-title">Integrated Modules</div>
+<div class="grid-3" style="gap:6px;">
+  <div class="card"><div class="card-title"><span style="color:var(--primary);font-weight:700;">&#9654;</span> Invoices & OCR</div><div class="card-desc">AI extraction, auto-posting, anomaly detection</div></div>
+  <div class="card card-blue"><div class="card-title"><span style="color:var(--green);font-weight:700;">&#9650;</span> AI Accounting</div><div class="card-desc">SYSCOHADA chart, journal, ledger, trial balance</div></div>
+  <div class="card card-green"><div class="card-title"><span style="color:var(--secondary);font-weight:700;">&#9679;</span> Reconciliation</div><div class="card-desc">Intelligent automated bank matching</div></div>
+  <div class="card card-purple"><div class="card-title"><span style="color:var(--purple);font-weight:700;">&#9830;</span> Integrated Payroll</div><div class="card-desc">Salaries, contributions, compliant payslips</div></div>
+  <div class="card card-yellow"><div class="card-title"><span style="color:var(--yellow);font-weight:700;">&#9632;</span> Client Invoicing</div><div class="card-desc">Integrated tax, standardization, sending</div></div>
+  <div class="card" style="border-left-color:var(--red);"><div class="card-title"><span style="color:var(--red);font-weight:700;">&#9733;</span> Tax Declarations</div><div class="card-desc">VAT, CIT, withholdings — auto-generation</div></div>
+</div>
+
+<div class="section-title">Competitive Advantages</div>
+<div class="benefit-grid">
+  <div class="benefit"><div class="benefit-icon"><span style="font-weight:700;color:var(--primary);">AI</span></div><div class="benefit-title">Native AI</div><div class="benefit-desc">Not an add-on — AI is at the core of every module</div></div>
+  <div class="benefit"><div class="benefit-icon"><span style="font-weight:700;color:var(--secondary);">&#9679;</span></div><div class="benefit-title">OHADA Native</div><div class="benefit-desc">Built for SYSCOHADA and 17 tax jurisdictions</div></div>
+  <div class="benefit"><div class="benefit-icon"><span style="font-weight:700;color:var(--yellow);">&#9889;</span></div><div class="benefit-title">70-80% Faster</div><div class="benefit-desc">Proven time savings vs. manual processing</div></div>
+  <div class="benefit"><div class="benefit-icon"><span style="font-weight:700;color:var(--green);">&#9679;</span></div><div class="benefit-title">Human in Control</div><div class="benefit-desc">AI proposes, the professional always validates</div></div>
+  <div class="benefit"><div class="benefit-icon"><span style="font-weight:700;color:var(--secondary);">&#9632;</span></div><div class="benefit-title">Cloud-first</div><div class="benefit-desc">Accessible anywhere, fast deployment, continuous updates</div></div>
+  <div class="benefit"><div class="benefit-icon"><span style="font-weight:700;color:var(--primary);">&#9733;</span></div><div class="benefit-title">Africa Pricing</div><div class="benefit-desc">Pricing adapted to African market, no compromise</div></div>
+</div>
+
+<div class="flex-row" style="margin-bottom:12px;">
+  <div class="flex-col">
+    <div class="section-title">Market</div>
+    <div class="market-row" style="margin-bottom:0;">
+      <div class="market-card"><div class="market-label tam">TAM</div><div class="market-val">17 OHADA countries · Tens of thousands of firms</div></div>
+      <div class="market-card"><div class="market-label sam">SAM</div><div class="market-val">Senegal · 300+ accounting firms</div></div>
+      <div class="market-card"><div class="market-label som">SOM</div><div class="market-val">10 clients Y1 · 60 Y3 · 200+ Y5</div></div>
+    </div>
+  </div>
+  <div class="flex-col">
+    <div class="section-title">Roadmap</div>
+    <div class="roadmap-steps" style="margin-bottom:0;">
+      <div class="step" style="border-top-color:var(--primary);"><div class="step-label">Now</div><div class="step-text">Standalone modules · SENCAS beta</div></div>
+      <div class="step" style="border-top-color:var(--secondary);"><div class="step-label">H2 2026</div><div class="step-text">Progressive module integration</div></div>
+      <div class="step" style="border-top-color:var(--green);"><div class="step-label">2027</div><div class="step-text">Full ERP · Multi-country</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">The Team — 66 years expertise</div>
+<div class="team-row">
+  <div class="team-member"><div class="team-name">Sédar H. Senghor</div><div class="team-role">CEO</div><div class="team-exp">16 yrs · Finance & Stratégie</div></div>
+  <div class="team-member"><div class="team-name">Medoune Ndiaye</div><div class="team-role">CTO</div><div class="team-exp">15 yrs · IA & Archi · Ex-Microsoft</div></div>
+  <div class="team-member"><div class="team-name">Cheikh A.T. Diouf</div><div class="team-role">Tax Director</div><div class="team-exp">15 yrs · Droit fiscal</div></div>
+  <div class="team-member"><div class="team-name">Alassane Boye</div><div class="team-role">Operations Dir.</div><div class="team-exp">20 yrs · Droit & Gestion</div></div>
+</div>
+
+<div class="cta-bar">
+  <div>
+    <div class="cta-text">Pre-seed Raise: <span class="cta-highlight">300 000 €</span> · 2-year runway · Accelerate full ERP delivery</div>
+  </div>
+  <div style="text-align:right;">
+    <div class="cta-contact">sedar.senghor@korametrics.com · +221 77 182 39 26</div>
+    <div class="cta-contact" style="color:var(--secondary)">www.korametrics.com</div>
+  </div>
+</div>
+
+</body></html>
