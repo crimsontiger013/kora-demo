@@ -8,13 +8,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://demo.korametrics.com"),
   title: "Kora Metrics — AI-Powered Accounting & Tax Automation",
   description:
     "Suite d'outils IA pour l'automatisation comptable et fiscale en Afrique. SYSCOHADA · OHADA · Sénégal.",
   openGraph: {
     title: "Kora Metrics",
     description: "AI-Powered Accounting & Tax Automation for Africa",
-    images: ["/images/og-image.png"],
     url: "https://demo.korametrics.com",
   },
   twitter: {
