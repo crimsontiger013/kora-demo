@@ -70,12 +70,12 @@ export const dictionaries = {
         {
           title: "Déclarations TVA",
           desc: "Génération automatique des déclarations conformes DGID.",
-          youtubeId: null,
+          youtubeId: "z1ayD1tgbpc",
         },
         {
           title: "Gestion de la Paie",
           desc: "Calcul automatisé des salaires et bulletins de paie.",
-          youtubeId: null,
+          youtubeId: "ZNoUvPEttBo",
         },
       ],
     },
@@ -153,12 +153,12 @@ export const dictionaries = {
         {
           title: "VAT Declarations",
           desc: "Automatic generation of DGID-compliant declarations.",
-          youtubeId: null,
+          youtubeId: "NxC1H02oE8Q",
         },
         {
           title: "Payroll Management",
           desc: "Automated salary computation and payslips.",
-          youtubeId: null,
+          youtubeId: "ZH1pAJSmoVE",
         },
       ],
     },
