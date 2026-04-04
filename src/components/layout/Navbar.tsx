@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import type { Locale } from "@/types";
 import type { Dictionary } from "@/lib/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeSwitcher } from "./ThemeSwitcher";
+import { ThemeLogo } from "@/components/ui/ThemeLogo";
 
 type NavbarProps = {
   locale: Locale;
@@ -31,13 +32,7 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href={`/${locale}`} className="shrink-0">
-          <Image
-            src="/images/kora-logo-dark.svg"
-            alt="Kora Metrics"
-            width={120}
-            height={32}
-            priority
-          />
+          <ThemeLogo width={120} height={32} priority />
         </Link>
 
         {/* Desktop nav */}
@@ -66,8 +61,9 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
           })}
         </nav>
 
-        {/* Desktop language switcher */}
-        <div className="hidden md:block">
+        {/* Desktop: theme switcher + language switcher */}
+        <div className="hidden md:flex items-center gap-2">
+          <ThemeSwitcher />
           <LanguageSwitcher locale={locale} />
         </div>
 
@@ -110,7 +106,10 @@ export function Navbar({ locale, dictionary }: NavbarProps) {
                 );
               })}
             </nav>
-            <LanguageSwitcher locale={locale} />
+            <div className="flex items-center gap-2">
+              <ThemeSwitcher />
+              <LanguageSwitcher locale={locale} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

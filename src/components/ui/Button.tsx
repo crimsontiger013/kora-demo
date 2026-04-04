@@ -25,7 +25,7 @@ export function Button({
   const variants = {
     primary: "bg-primary text-primary-foreground hover:bg-primary/90",
     outline:
-      "border border-border text-foreground hover:bg-[#253047] hover:border-primary/30",
+      "border border-border text-foreground hover:bg-muted hover:border-primary/30",
   };
 
   const styles = `${baseStyles} ${variants[variant]} ${className}`;

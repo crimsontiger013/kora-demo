@@ -63,7 +63,7 @@ export function PitchDeckContent({
             <a
               href={pptxSrc}
               download
-              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:bg-[#253047] hover:border-primary/30"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:bg-muted hover:border-primary/30"
             >
               <FileDown size={16} />
               {downloadPptxLabel}

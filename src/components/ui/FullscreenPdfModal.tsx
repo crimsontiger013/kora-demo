@@ -60,7 +60,7 @@ export function FullscreenPdfModal({
               <a
                 href={src}
                 download
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-[#253047] hover:border-primary/30"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-all duration-300 hover:bg-muted hover:border-primary/30"
               >
                 <Download size={16} />
                 <span className="hidden sm:inline">{downloadLabel}</span>
@@ -68,7 +68,7 @@ export function FullscreenPdfModal({
               <button
                 onClick={onClose}
                 aria-label={closeLabel}
-                className="inline-flex items-center justify-center rounded-full border border-border bg-card p-2 text-foreground transition-all duration-300 hover:bg-[#253047] hover:border-primary/30"
+                className="inline-flex items-center justify-center rounded-full border border-border bg-card p-2 text-foreground transition-all duration-300 hover:bg-muted hover:border-primary/30"
               >
                 <X size={20} />
               </button>

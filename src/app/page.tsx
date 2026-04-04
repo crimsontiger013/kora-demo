@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { GridBackground } from "@/components/ui/GridBackground";
 import { RadialGlow } from "@/components/ui/RadialGlow";
+import { ThemeLogo } from "@/components/ui/ThemeLogo";
 
 export default function SplashPage() {
   const router = useRouter();
@@ -21,13 +21,7 @@ export default function SplashPage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <Image
-            src="/images/kora-logo-dark.svg"
-            alt="Kora Metrics"
-            width={240}
-            height={64}
-            priority
-          />
+          <ThemeLogo width={240} height={64} priority />
         </motion.div>
 
         {/* Tagline */}
@@ -56,7 +50,7 @@ export default function SplashPage() {
               onClick={() => router.push(`/${btn.locale}`)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="rounded-full border border-border bg-card px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:bg-[#253047] hover:border-primary/30"
+              className="rounded-full border border-border bg-card px-8 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:bg-muted hover:border-primary/30"
             >
               {btn.label}
             </motion.button>

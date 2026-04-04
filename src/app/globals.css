@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
   --radius: 0.75rem;
 
+  /* Dark mode (default) */
   --color-background: #0F172A;
   --color-foreground: #F1F5F9;
   --color-primary: #e78a53;
@@ -14,11 +18,23 @@
   --color-card-foreground: #F1F5F9;
   --color-muted: #334155;
   --color-muted-foreground: #94A3B8;
+  --color-accent: #64748B;
+  --color-accent-foreground: #F1F5F9;
   --color-border: #334155;
   --color-input: #1E293B;
   --color-ring: #e78a53;
+  --color-destructive: #EF4444;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+
+  /* Sidebar (Dark) */
   --color-sidebar: #111827;
   --color-sidebar-foreground: #F1F5F9;
+  --color-sidebar-primary: #e78a53;
+  --color-sidebar-accent: #475569;
+  --color-sidebar-border: #334155;
+
+  /* Charts (Dark) */
   --color-chart-1: #3B82F6;
   --color-chart-2: #e78a53;
   --color-chart-3: #10B981;
@@ -26,9 +42,84 @@
   --color-chart-5: #F59E0B;
 }
 
+/* ── Dark mode (default) ── */
 html {
   height: 100%;
   color-scheme: dark;
+}
+
+/* ── Light Mode — Warm Beige ── */
+.light {
+  color-scheme: light;
+  --color-background: #FAF6F1;
+  --color-foreground: #1A1A1A;
+  --color-primary: #e07840;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #0B4479;
+  --color-secondary-foreground: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1A1A1A;
+  --color-muted: #F5F0EA;
+  --color-muted-foreground: #6B7280;
+  --color-accent: #F0EBE4;
+  --color-accent-foreground: #1A1A1A;
+  --color-border: #E8E0D8;
+  --color-input: #E8E0D8;
+  --color-ring: #e07840;
+  --color-destructive: #EF4444;
+  --color-success: #059669;
+  --color-warning: #D97706;
+
+  /* Sidebar (Light Beige) */
+  --color-sidebar: #FFFFFF;
+  --color-sidebar-foreground: #1A1A1A;
+  --color-sidebar-primary: #e07840;
+  --color-sidebar-accent: #F5F0EA;
+  --color-sidebar-border: #E8E0D8;
+
+  /* Charts (Light Beige) */
+  --color-chart-1: #0EA5E9;
+  --color-chart-2: #e78a53;
+  --color-chart-3: #059669;
+  --color-chart-4: #7C3AED;
+  --color-chart-5: #64748B;
+}
+
+/* ── Light Mode — Slate Mist ── */
+.light-mist {
+  color-scheme: light;
+  --color-background: #F0F4F8;
+  --color-foreground: #1E2A3A;
+  --color-primary: #0B4479;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #E07840;
+  --color-secondary-foreground: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1E2A3A;
+  --color-muted: #DDE5EF;
+  --color-muted-foreground: #64748B;
+  --color-accent: #E8EFF7;
+  --color-accent-foreground: #1E2A3A;
+  --color-border: #CBD5E1;
+  --color-input: #CBD5E1;
+  --color-ring: #0B4479;
+  --color-destructive: #EF4444;
+  --color-success: #059669;
+  --color-warning: #D97706;
+
+  /* Sidebar (Slate Mist) */
+  --color-sidebar: #E8EFF7;
+  --color-sidebar-foreground: #1E2A3A;
+  --color-sidebar-primary: #0B4479;
+  --color-sidebar-accent: #DDE5EF;
+  --color-sidebar-border: #CBD5E1;
+
+  /* Charts (Slate Mist) */
+  --color-chart-1: #3B82F6;
+  --color-chart-2: #E07840;
+  --color-chart-3: #059669;
+  --color-chart-4: #7C3AED;
+  --color-chart-5: #F59E0B;
 }
 
 html,
@@ -46,6 +137,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 *,
@@ -59,7 +151,42 @@ a {
   text-decoration: none;
 }
 
-/* Graph paper grid — signature Kora pattern */
+/* ── Utility: financial-value ── */
+.financial-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Utility: card-elevated (light mode shadows) ── */
+.light .card-elevated,
+.light-mist .card-elevated {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+}
+.light .card-elevated:hover,
+.light-mist .card-elevated:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+}
+
+/* ── Utility: sidebar-separator (light mode edge shadow) ── */
+.light .sidebar-separator,
+.light-mist .sidebar-separator {
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Alert severity classes ── */
+.alert-warning {
+  background-color: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid var(--color-warning);
+}
+.alert-error {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-left: 3px solid var(--color-destructive);
+}
+.alert-info {
+  background-color: rgba(59, 130, 246, 0.08);
+  border-left: 3px solid var(--color-secondary);
+}
+
+/* ── Graph paper grid — signature Kora pattern ── */
 .grid-background {
   background-image:
     linear-gradient(rgba(241, 245, 249, 0.03) 1px, transparent 1px),
@@ -68,14 +195,29 @@ a {
   background-position: center center;
 }
 
-/* Radial glow effect */
+.light .grid-background,
+.light-mist .grid-background {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* ── Radial glow effect ── */
 .glow-primary {
   background: radial-gradient(circle, rgba(231, 138, 83, 0.2) 0%, transparent 70%);
   filter: blur(120px);
   pointer-events: none;
 }
 
-/* Dark scrollbar matching Kora theme */
+.light .glow-primary {
+  background: radial-gradient(circle, rgba(224, 120, 64, 0.12) 0%, transparent 70%);
+}
+
+.light-mist .glow-primary {
+  background: radial-gradient(circle, rgba(11, 68, 121, 0.12) 0%, transparent 70%);
+}
+
+/* ── Scrollbar — dark mode ── */
 * {
   scrollbar-width: thin;
   scrollbar-color: #334155 #1E293B;
@@ -96,4 +238,38 @@ a {
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: #475569;
+}
+
+/* ── Scrollbar — Light Beige ── */
+.light * {
+  scrollbar-color: #E8E0D8 #FAF6F1;
+}
+
+.light *::-webkit-scrollbar-track {
+  background: #FAF6F1;
+}
+
+.light *::-webkit-scrollbar-thumb {
+  background-color: #E8E0D8;
+}
+
+.light *::-webkit-scrollbar-thumb:hover {
+  background-color: #D5CCC3;
+}
+
+/* ── Scrollbar — Slate Mist ── */
+.light-mist * {
+  scrollbar-color: #CBD5E1 #F0F4F8;
+}
+
+.light-mist *::-webkit-scrollbar-track {
+  background: #F0F4F8;
+}
+
+.light-mist *::-webkit-scrollbar-thumb {
+  background-color: #CBD5E1;
+}
+
+.light-mist *::-webkit-scrollbar-thumb:hover {
+  background-color: #94A3B8;
 }

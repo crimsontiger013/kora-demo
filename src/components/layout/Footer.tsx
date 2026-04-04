@@ -1,9 +1,11 @@
-import Image from "next/image";
+"use client";
+
 import { Mail, Globe } from "lucide-react";
 import type { Locale } from "@/types";
 import type { Dictionary } from "@/lib/i18n";
 import { CONTACT } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
+import { ThemeLogo } from "@/components/ui/ThemeLogo";
 
 type FooterProps = {
   locale: Locale;
@@ -16,12 +18,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
       <div className="mx-auto max-w-7xl px-4 py-10 md:px-6">
         <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
           <div className="flex flex-col items-center gap-3 md:items-start">
-            <Image
-              src="/images/kora-logo-dark.svg"
-              alt="Kora Metrics"
-              width={100}
-              height={26}
-            />
+            <ThemeLogo width={100} height={26} />
             <p className="text-sm text-muted-foreground">
               {dictionary.footer.rights}
             </p>

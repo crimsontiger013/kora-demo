@@ -40,7 +40,7 @@ export function DocumentViewer({
         <a
           href={src}
           download
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:bg-[#253047] hover:border-primary/30"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:bg-muted hover:border-primary/30"
         >
           <Download size={16} />
           {downloadLabel}
@@ -48,7 +48,7 @@ export function DocumentViewer({
         {expandLabel && closeLabel && (
           <button
             onClick={() => setIsFullscreen(true)}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:bg-[#253047] hover:border-primary/30"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:bg-muted hover:border-primary/30"
           >
             <Maximize2 size={16} />
             {expandLabel}
