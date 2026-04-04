@@ -14,8 +14,6 @@ export default async function DemosPage({
     <DemosContent
       title={dictionary.demos.title}
       subtitle={dictionary.demos.subtitle}
-      comingSoon={dictionary.demos.comingSoon}
-      comingSoonBadge={dictionary.demos.comingSoonBadge}
       modules={dictionary.demos.modules}
     />
   );

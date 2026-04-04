@@ -41,7 +41,7 @@ export function QuickNavSection({ locale, dictionary }: QuickNavSectionProps) {
         locale === "fr"
           ? "Vidéos de démonstration de nos modules"
           : "Demo videos of our modules",
-      badge: dictionary.demos.comingSoonBadge,
+      badge: undefined,
     },
   ];
 

@@ -32,5 +32,5 @@ export const CONTACT = {
   email: "contact@korametrics.com",
   phone: "+221 77 182 39 26",
   website: "https://www.korametrics.com",
-  whatsapp: "https://wa.me/221771823926",
+  whatsapp: "https://wa.me/221784850605",
 } as const;
