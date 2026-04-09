@@ -47,7 +47,7 @@ export const dictionaries = {
     },
     pitchDeck: {
       title: "Pitch Deck — GITEX Africa 2026",
-      subtitle: "12 slides · Kora Metrics",
+      subtitle: "15 slides · Kora Metrics",
       downloadPdf: "Télécharger (PDF)",
       downloadPptx: "Télécharger (PowerPoint)",
     },
@@ -130,7 +130,7 @@ export const dictionaries = {
     },
     pitchDeck: {
       title: "Pitch Deck — GITEX Africa 2026",
-      subtitle: "12 slides · Kora Metrics",
+      subtitle: "15 slides · Kora Metrics",
       downloadPdf: "Download (PDF)",
       downloadPptx: "Download (PowerPoint)",
     },
